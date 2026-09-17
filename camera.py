@@ -1,7 +1,7 @@
 import cv2
 import time
 
-from separar_cor import separar_canais_rgb, visualizar_canais
+from funcoes.separar_cor import separar_canais_rgb, visualizar_canais
 
 def plotar_grafico(frame):
     separar_canais_rgb(frame)

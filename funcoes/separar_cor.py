@@ -31,26 +31,22 @@ def visualizar_canais(img_bgr, caminho):
     plt.tight_layout()
     plt.savefig(caminho)
 
-# Entendendo vetores
-# imageColor = cv2.imread(r"./imagens/teste/cereja.jpeg", cv2.IMREAD_COLOR)
-# imageBlack = cv2.imread(r"./imagens/teste/cereja.jpeg", cv2.IMREAD_GRAYSCALE)
+# - FUNÇÃO: visualizar canais HSV -
+def visualizar_hsv(img_bgr, caminho):
+    """
+    Converte a imagem de BGR para HSV e plota os 3 canais separados
+    """
+    img_hsv = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)
+    # img_bgr = cv2.cvtColor(img_bgr, cv2.COLOR_GRAY2BGR)
 
-# print("-> Conteúdo numérico da imagem imageBlack.png (escala de cinza)")
-# print("Forma do vetor:", imageBlack.shape)
-# print("Primeiros 3x3 pixels:\n", imageBlack[:3, :3])
+    # Dividimos o array 3D em 3 arrays 2D
+    h, s, v = cv2.split(img_hsv)
 
-# print("\n -- \n")
-
-# print("-> Conteúdo numérico da imagem imageColor.png (colorida)")
-# print("Forma do vetor:", imageColor.shape)
-# print("Primeiros 3x3 pixels (BGR):\n", imageColor[:3, :3, :])
-
-# # Exibição de canais
-# imageColor = cv2.imread(r"./imagens/teste/cereja.jpeg")
-# visualizar_canais(imageColor)
-
-'''
-PEGAR, NESSE VÍDEO, 1 FRAME, E DENTRO DESSE FRAME PEGAR E APLICAR ESSAS TÉCNICAS DESSE ARQUIVO
--> Separar canais RGB
--> Plotar gráfico com a imagem original e seus 3 canais
-'''
+    fig, axes = plt.subplots(1, 4, figsize=(25, 30))
+    axes[0].imshow(h); axes[0].set_title("Original RGB")
+    axes[1].imshow(h, cmap="hsv"); axes[1].set_title("Canal H (Hue)")
+    axes[2].imshow(h, cmap="gray"); axes[2].set_title("Canal S (Saturation)")
+    axes[3].imshow(h, cmap="gray"); axes[3].set_title("Canal V (Value/Brilho)")
+    for ax in axes: ax.axis("off")
+    plt.tight_layout()
+    plt.savefig(caminho)

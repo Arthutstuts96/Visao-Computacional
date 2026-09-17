@@ -1,34 +1,26 @@
 import cv2
 import matplotlib.pyplot as plt
 
-imagemColor = cv2.imread("camera/img/connor-ward.png")
-img_rgb = cv2.cvtColor(imagemColor, cv2.COLOR_BGR2RGB)
+from funcoes.separar_cor import visualizar_canais, visualizar_hsv
 
-# cv2.imshow("Mostrando a imagem", imagemColor)
+# Entendendo vetores
+imageColor = cv2.imread(r"./imagens/teste/cereja.jpeg", cv2.IMREAD_COLOR)
+imageBlack = cv2.imread(r"./imagens/teste/cereja.jpeg", cv2.IMREAD_GRAYSCALE)
 
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+# print("-> Conteúdo numérico da imagem imageBlack.png (escala de cinza)")
+# print("Forma do vetor:", imageBlack.shape)
+# print("Primeiros 3x3 pixels:\n", imageBlack[:3, :3])
 
-# img_rgb = cv2.imread("camera/img/bernie-almanzar.png", cv2.COLOR_BGR2RGB)
+# print("\n -- \n")
 
-# plt.imshow(img_rgb)
-# plt.title("Mostrando a imagem")
-# plt.axis("off")
-# plt.show()
-fig, axes = plt.subplots(2, 3, figsize=(15, 5))
+# print("-> Conteúdo numérico da imagem imageColor.png (colorida)")
+# print("Forma do vetor:", imageColor.shape)
+# print("Primeiros 3x3 pixels (BGR):\n", imageColor[:3, :3, :])
 
-axes[0, 0].imshow(img_rgb)
-axes[0, 0].set_title("Fig 1")
-
-axes[0, 0].imshow(img_rgb)
-axes[0, 1].set_title("Das")
-axes[0, 1].axis("off")
-
-plt.figure(figsize=(10,5))
-axl = plt.subplot(2, 2, 1)
-axl.imshow(img_rgb)
-axl.set_title(f"Original {img_rgb.shape}")
-axl('off')
-
-plt.tight_layout()
-plt.show()
+# Exibição de canais
+imageColor = cv2.imread(r"./camera/img/laranja.png")
+visualizar_hsv(imageColor, "imagens/resultados/hsv/img1.png")
+imageColor = cv2.imread(r"./camera/img/GuardaSol.png")
+visualizar_hsv(imageColor, "imagens/resultados/hsv/img2.png")
+imageColor = cv2.imread(r"./camera/img/logos.png")
+visualizar_hsv(imageColor, "imagens/resultados/hsv/img3.png")
