@@ -8,12 +8,13 @@ def plotar_grafico(frame):
     visualizar_canais(frame, f"./imagens/graficos/frame_{int(time.time())}.png")
 
 
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("camera/videos/dog.mp4")
 prev_time = time.time()
 
 while True:
-    ret, frame = cap.read()
-    if not ret:
+    _, frame = cap.read()
+    if not _:
         break
 
     curr_time = time.time()
