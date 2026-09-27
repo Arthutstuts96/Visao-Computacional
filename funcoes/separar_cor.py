@@ -1,7 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
 
-# — FUNÇÃO: separar canais RGB —
+
 def separar_canais_rgb(img_bgr):
     """
     Separa os 3 canais de uma imagem BGR.
@@ -16,9 +16,11 @@ def separar_canais_rgb(img_bgr):
     vermelho = img_bgr[:, :, 2]
     return vermelho, verde, azul
 
-# — FUNÇÃO: visualizar canais —
+
 def visualizar_canais(img_bgr, caminho):
-    """Plota a imagem original e seus 3 canais R, G, B lado a lado."""
+    """
+    Plota a imagem original e seus 3 canais R, G, B lado a lado.
+    """
     img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
     r, g, b = separar_canais_rgb(img_bgr)
 
@@ -31,7 +33,7 @@ def visualizar_canais(img_bgr, caminho):
     plt.tight_layout()
     plt.savefig(caminho)
 
-# - FUNÇÃO: visualizar canais HSV -
+
 def visualizar_hsv(img_bgr, caminho):
     """
     Converte a imagem de BGR para HSV e plota os 3 canais separados
@@ -43,10 +45,10 @@ def visualizar_hsv(img_bgr, caminho):
     h, s, v = cv2.split(img_hsv)
 
     fig, axes = plt.subplots(1, 4, figsize=(25, 30))
-    axes[0].imshow(h); axes[0].set_title("Original RGB")
+    axes[0].imshow(img_bgr); axes[0].set_title("Original RGB")
     axes[1].imshow(h, cmap="hsv"); axes[1].set_title("Canal H (Hue)")
-    axes[2].imshow(h, cmap="gray"); axes[2].set_title("Canal S (Saturation)")
-    axes[3].imshow(h, cmap="gray"); axes[3].set_title("Canal V (Value/Brilho)")
+    axes[2].imshow(s, cmap="gray"); axes[2].set_title("Canal S (Saturation)")
+    axes[3].imshow(v, cmap="gray"); axes[3].set_title("Canal V (Value/Brilho)")
     for ax in axes: ax.axis("off")
     plt.tight_layout()
     plt.savefig(caminho)
