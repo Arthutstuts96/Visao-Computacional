@@ -1,7 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
 
-from funcoes.manipular_imagems import ajustar_brilho_contraste, cortar, redimensionar, rotacionar
+from funcoes.manipular_imagens import ajustar_brilho_contraste, cortar, redimensionar, rotacionar
 
 # from funcoes.separar_cor import visualizar_canais, visualizar_hsv
 
